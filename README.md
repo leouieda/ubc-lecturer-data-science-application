@@ -1,4 +1,4 @@
-# Application material for the Lecturer position at the UBC Master of Data Science program
+# Application material: Lecturer - UBC Master of Data Science program
 
 Candidate: [Leonardo Uieda](http://www.leouieda.com/)
 
