@@ -12,6 +12,7 @@ notifications:
 env:
     global:
         # Github Token for pushing the built docs (GH_TOKEN)
+        - secure: "Kpn1tT/RTRkboNeIw5wQBWA5Ewvl9bZBnOeLRUtNtax2mQ/dIARifGVGp4NDyB1bj+o6lOqXq0Kg6Ueu+3568e9ElkUxzGh37MruehkTPyZfNjj4GFhkPPsQ7y6OSXB6bo4z/fhcu86EkS2W/p7pWVfLS0eNeCaxKXMlyEpbpaMZA4WY3w5FAJ4Qx7cy7OjKdVvZ+heir1gSwzBeznWYwhke/lfqZ+JAByAlUvPfnbiXn3n7Z9O5ZXu4REDhZeLDld6XhGmwlbXoirEjNk4loipwy/hsXouEuwEaMffvIsJmuvoZs4he5H0xa26sSWlMGZWHPo3+xeR4Yf4+qwHABCLDMVE0AS01b4MNE4ULvGtlEosDpZKo55r+FAP8+2UxKEVBX0MNmajl1zKZGf8x1h82XNinSpRSvWG5QGcrBryddHwpq0YuzPKSDr2yx3dDUDhkcdIY9yI5bHCQ8wJGSCDuks9uwHERusy7PsjzP+dd0S4AObeXF5UBtdEax65EcuB9JcWYcStIV0FmCMo6ybMibmCdX/pwUN0mDhLRwetvvx4NnLSSy6dQ5NnV2fnMfeVuWwiknCDjyyZjwoX0J9GOjoudjLsYmXR1ltV0n7UUB+o/R3oZ/CR2TM7VVbrSLi/K6V+6f8J86AXiWX1r2811w72XG1xHc28yJ3IU9uE="
 
 before_install:
     - sudo apt-get -q update
