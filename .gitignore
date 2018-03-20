@@ -8,3 +8,4 @@ output/
 *.log
 *.out
 *.pdf
+images/*-eps-converted-to.pdf

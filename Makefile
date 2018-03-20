@@ -34,3 +34,4 @@ show: all
 clean:
 	rm -rf *.aux *.log *.bbl *.blg *.out *.toc
 	rm -rf $(TARGETS)
+	rm -rf images/*-eps-converted-to.pdf

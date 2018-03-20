@@ -1,0 +1,69 @@
+\documentclass[10pt]{letter}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+    pdftitle={Cover Letter},
+    pdfauthor={Leonardo Uieda},
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=black
+}
+
+\longindentation=0pt
+
+% Redefine the empty style so the front page also has a header.
+\fancypagestyle{empty}{ %
+    \fancyhf{} % remove everything
+    \lhead{\includegraphics[width=\columnwidth]{images/soest-logo.eps}}
+    %\lhead{\includegraphics[width=0.5\columnwidth]{images/uh-logo.eps}}
+    \cfoot{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{1pt}
+    \setlength\headheight{31pt}
+}
+\pagestyle{empty}
+
+\signature{
+    Leonardo Uieda
+    \\[0.3cm]
+    Department of Geology and Geophysics
+    \\
+    University of Hawai'i at M\={a}noa
+}
+\address{
+    1680 East-West Road, POST 804
+    \\
+    Honolulu, HI 96822, USA.
+    \\
+    email: \href{mailto:leouieda@gmail.com}{leouieda@gmail.com}
+    \\
+    phone: +1 808 428 4521
+}
+
+\begin{document}
+
+\begin{letter}{
+    Department of Statistics
+    \\
+    Faculty of Science
+    \\
+    3182 Earth Sciences Building, 2207 Main Mall
+    \\
+    Vancouver, BC Canada V6T 1Z4
+}
+\opening{Dear Members of the Search Committee:}
+
+Bla bla bla
+\newpage
+Meh
+
+\closing{Thank you for your consideration,}
+
+\end{letter}
+
+\end{document}
