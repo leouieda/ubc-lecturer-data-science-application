@@ -19,17 +19,20 @@
 % Redefine the empty style so the front page also has a header.
 \fancypagestyle{empty}{ %
     \fancyhf{} % remove everything
-    \lhead{\includegraphics[width=\columnwidth]{images/soest-logo.eps}}
-    %\lhead{\includegraphics[width=0.5\columnwidth]{images/uh-logo.eps}}
+    \lhead{}
     \cfoot{\thepage}
     \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{1pt}
+    \renewcommand{\footrulewidth}{0pt}
     \setlength\headheight{31pt}
 }
 \pagestyle{empty}
 
 \signature{ Leonardo Uieda }
 \address{
+    Department of Geology and Geophysics
+    \\
+    University of Hawai'i at M\={a}noa
+    \\
     1680 East-West Road, POST 804
     \\
     Honolulu, HI 96822, USA.
