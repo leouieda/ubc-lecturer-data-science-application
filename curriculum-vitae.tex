@@ -1,0 +1,700 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A clean template for an academic CV
+%
+% Uses tabularx to create two column entries (date and job/edu/citation).
+% Requires the Google Fonts "Source Sans Pro" and "Source Code Pro".
+% You can install them on Linux using TypeCatcher.
+% Must be compiled with XeLaTex to use the custom fonts (see the Makefile).
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper]{article}
+
+% Identifying information
+\newcommand{\Title}{Curriculum Vit\ae}
+\newcommand{\FirstName}{Leonardo}
+\newcommand{\LastName}{Uieda}
+\newcommand{\Initials}{L}
+\newcommand{\MyName}{\FirstName\ \LastName}
+\newcommand{\Me}{\textbf{\LastName, \Initials}}  % For citations
+\newcommand{\Email}{leouieda@gmail.com}
+\newcommand{\Website}{www.leouieda.com}
+\newcommand{\ORCID}{0000-0001-6123-9515}
+\newcommand{\Affiliation}{
+    Department of Geology and Geophysics
+    -- SOEST -- University of Hawai'i at Manoa
+}
+\newcommand{\Address}{
+    1680 East-West Rd -- POST 804, 96822 Honolulu, HI, USA
+}
+
+% Names for citing coauthors
+\newcommand{\Val}{Barbosa, VCF}
+\newcommand{\Bi}{Oliveira Jr, VC}
+\newcommand{\Paul}{Wessel, P}
+\newcommand{\Carla}{Braitenberg, C}
+\newcommand{\JB}{Silva, JBC}
+\newcommand{\Dai}{Sales, DP}
+\newcommand{\Figura}{Melo, FF}
+\newcommand{\Dio}{Carlos, DU}
+\newcommand{\BragaVale}{Braga, MA}
+\newcommand{\YLi}{Li, Y}
+\newcommand{\Angeli}{Angeli, G}
+\newcommand{\Peres}{Peres, G}
+\newcommand{\Everton}{Bomfim, EP}
+\newcommand{\Eder}{Molina, E}
+\newcommand{\Gomes}{Gomes, AAS}
+\newcommand{\Santiago}{Soler, SR}
+\newcommand{\Agustina}{Pesce, A}
+\newcommand{\Gimenez}{Gimenez, ME}
+
+
+% Template configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Control the font size
+\usepackage{anyfontsize}
+
+% Template variables for styling
+\newcommand{\TablePad}{\vspace{-0.4cm}}
+\newcommand{\SoftwareTitle}[1]{{\bfseries #1}}
+\newcommand{\TableTitle}[1]{{\fontsize{12pt}{0}\selectfont \itshape #1}}
+\newcommand{\Invited}{[\textbf{Invited}] -- }
+
+% For fancy and multipage tables
+\usepackage{tabularx}
+\usepackage{ltablex}
+
+% Define a new environment to place all CV entries in a 2-column table.
+% Left column are the dates, right column the entries.
+\usepackage{environ}
+\NewEnviron{EntriesTable}{
+    \TablePad
+    \begin{tabularx}{\textwidth}{@{}p{0.10\textwidth} p{0.9\textwidth}@{}}
+        \BODY
+    \end{tabularx}
+}
+
+% Macros to add links
+\newcommand{\DOI}[1]{doi:\href{https://doi.org/#1}{#1}}
+\newcommand{\Youtube}[1]{[recording: \href{https://youtu.be/#1}{youtu.be/#1}]}
+% Macros to set the year and duration on the left column
+\newcommand{\Duration}[2]{\fontsize{10pt}{0}\selectfont #1--#2}
+\newcommand{\Year}[1]{\fontsize{10pt}{0}\selectfont #1}
+
+% Define command to insert month name and year as date
+\usepackage{datetime}
+\newdateformat{monthyear}{\monthname[\THEMONTH], \THEYEAR}
+
+% Set the page margins
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+
+% No indentation
+\setlength\parindent{0cm}
+
+% Increase the line spacing
+\renewcommand{\baselinestretch}{1.1}
+\renewcommand{\arraystretch}{1.5}
+
+% Remove space between items in itemize and enumerate
+\usepackage{enumitem}
+\setlist{nosep}
+
+% Use custom colors
+\usepackage[usenames,dvipsnames]{xcolor}
+
+% Set fonts. Requires compilation with xelatex
+%\usepackage{fontspec}
+%\setmainfont[BoldFont=SourceSansPro-Semibold]{SourceSansPro-Light}
+%\setmonofont{Source Code Pro}
+
+% Configure the font style for sections
+\usepackage{sectsty}
+\sectionfont{\vspace{0.5cm}\bfseries\fontsize{12pt}{0}\selectfont\uppercase}
+\subsectionfont{\vspace{0.2cm}\mdseries\fontsize{12pt}{0}\selectfont\uppercase}
+
+% Set fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{
+    \itshape
+    \fontsize{10pt}{12pt}\selectfont
+    \MyName
+    \hspace{0.2cm} -- \hspace{0.2cm}
+    \Title
+    \hspace{0.2cm} -- \hspace{0.2cm}
+    \monthyear\today
+}
+\rhead{}
+\cfoot{\fontsize{10pt}{0}\selectfont \thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% Metadata for the PDF output and control of hyperlinks
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+    pdftitle={\MyName\ - \Title},
+    pdfauthor={\MyName},
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=black,
+    urlcolor=MidnightBlue
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+% No header for the first page
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HEADER
+\begin{center}
+    {\fontsize{24pt}{0}\selectfont \MyName}
+    \\[0.5cm]
+    {\fontsize{10pt}{0}\selectfont \Title \, | \, \monthyear\today}
+    \\[0.5cm]
+    {\fontsize{10pt}{0}\selectfont
+        \Affiliation
+        \\[0.2cm]
+        \Address
+        \\[0.08cm]
+        ORCID: \href{http://orcid.org/\ORCID}{\ORCID}
+        \, | \,
+        \href{mailto:\Email}{\Email}
+        \, | \,
+        \href{http://\Website}{\Website}
+    }
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Education}
+
+\begin{EntriesTable}
+    \Year{2016}  &
+    \textbf{PhD in Geophysics}, Observatório Nacional, Brazil
+    \newline
+    Thesis: \textit{Forward modeling and inversion of gravitational fields in
+    spherical coordinates}
+    \\
+    \Year{2011}  &
+    \textbf{MSc in Geophysics}, Observatório Nacional, Brazil
+    \newline
+    Thesis: \textit{Robust 3D gravity gradient inversion by planting anomalous
+    densities}
+    \\
+    \Year{2009}  &
+    \textbf{BSc in Geophysics}, Universidade de São Paulo, Brazil
+    \\
+    \Year{2008}  &
+    \textbf{International Exchange}, York University, Canada
+\end{EntriesTable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Professional experience}
+
+\begin{EntriesTable}
+    \Duration{2017}{}  &
+    \textbf{Visiting Research Scholar},
+    University of Hawaii at Manoa, USA
+    \\
+    \Duration{2014}{2018}  &
+    \textbf{Assistant Professor},
+    Universidade do Estado do Rio de Janeiro, Brazil
+\end{EntriesTable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Honors \& Awards}
+
+\begin{EntriesTable}
+    \Year{2017}  &
+    Brazilian Geophysical Society (SBGf) Award for \textbf{Best PhD Thesis}
+    of 2015 -- 2017
+    \\
+    \Year{2016}  &
+    Universidade do Estado do Rio de Janeiro, Brazil, School of Geology
+    \textbf{Teaching Award} given by the graduating class of 2016
+    \\
+    \Duration{2014}{2018}  &
+    QUALITEC/UERJ Grant for training a technician for the Laboratory of
+    Exploration Geophysics - Universidade do Estado do Rio de Janeiro
+    \\
+    \Duration{2011}{2015}  &
+    Brazilian Ministry of Education CAPES \textbf{PhD Research Scholarship}
+    \\
+    \Year{2011}  &
+    SEG Near Surface Geophysics Section \textbf{Student Travel Grant} to
+    present at the SEG Annual Meeting, San Antornio, TX, USA
+    \\
+    \Year{2011}  &
+    EAGE \textbf{PACE Student Travel Grant} to present at the 73rd EAGE
+    Conference \& Exhibition, Vienna, Austria
+    \\
+    \Duration{2010}{2011}  &
+    Brazilian Ministry of Education CAPES \textbf{Masters Research Scholarship}
+    \\
+    \Year{2008}  &
+    Brazilian Geophysical Society (SBGf) \textbf{Undergraduate Research
+    Scholarship}
+    \\
+    \Year{2005}  &
+    São Paulo Research Foundation (FAPESP) \textbf{Undergraduate Research
+    Scholarship}
+\end{EntriesTable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Publications}
+
+Source code, data, and PDFs for most articles are available
+at \href{http://www.leouieda.com/papers}{leouieda.com/papers}
+
+\subsection*{Peer-Reviewed}
+
+\begin{EntriesTable}
+\Year{In prep.}  &
+    \Santiago, \Agustina, \Me, \Gimenez.
+    Tesseroid gravity field calculations using variable densities in depth.
+    \\
+    ~ &
+    Zhao, G, Liu, J, \Me, Chen, B, Guo, R, Chen, L.
+    A fast algorithm for forward modeling of gravitational fields in
+    spherical coordinates with 3D Gauss-Legendre Quadrature.
+    \\
+%\Year{Review}  &
+    %\\
+\Year{2017}  &
+    \Me, \Val.
+    Fast non-linear gravity inversion in spherical coordinates with application
+    to the South American Moho,
+    \emph{Geophysical Journal International},
+    \DOI{10.1093/gji/ggw390}.
+    \\
+\Year{2016}  &
+    \Me, \Val, \Carla.
+    Tesseroids: forward modeling gravitational fields in spherical coordinates,
+    \emph{Geophysics},
+    \DOI{10.1190/geo2015-0204.1}.
+    \\
+    ~ &
+    \Dio, \Me, \Val.
+    How two gravity-gradient inversion methods can be used to reveal different
+    geologic features of ore deposit - A case study from the Quadrilátero
+    Ferrífero (Brazil),
+    \emph{Journal of Applied Geophysics},
+    \DOI{10.1016/j.jappgeo.2016.04.011}.
+    \\
+\Year{2015}  &
+    \Bi, \Dai, \Val, \Me.
+    Estimation of the total magnetization direction of approximately spherical
+    bodies,
+    \emph{Nonlinear Processes in Geophysics},
+    \DOI{10.5194/npg-22-215-2015}.
+    \\
+\Year{2014}  &
+    \Dio, \Me, \Val.
+    Imaging iron ore from the Quadrilátero Ferrífero (Brazil) using geophysical
+    inversion and drill hole data,
+    \emph{Ore Geology Reviews},
+    \DOI{10.1016/j.oregeorev.2014.02.011}.
+    \\
+\Year{2013}  &
+    \Figura, \Val, \Me, \Bi, \JB.
+    Estimating the nature and the horizontal and vertical positions of 3D
+    magnetic sources using Euler deconvolution,
+    \emph{Geophysics},
+    \DOI{10.1190/geo2012-0515.1}.
+    \\
+    ~ &
+    \Bi, \Val, \Me.
+    Polynomial equivalent layer,
+    \emph{Geophysics},
+    \DOI{10.1190/geo2012-0196.1}.
+    \\
+\Year{2012}  &
+    \Me, \Val.
+    Robust 3D gravity gradient inversion by planting anomalous densities,
+    \emph{Geophysics},
+    \DOI{10.1190/geo2011-0388.1}.
+\end{EntriesTable}
+
+
+\subsection*{Peer-Reviewed Conference proceedings}
+
+\begin{EntriesTable}
+\Year{2014}  &
+    \Figura, \Val, \Me, \Bi, \JB.
+    A Single Euler Solution Per Anomaly,
+    \emph{76th EAGE Conference and Exhibition 2014},
+    \DOI{10.3997/2214-4609.20140891}.
+    \\
+\Year{2013}  &
+    \Me, \Bi, \Val.
+    Modeling the Earth with Fatiando a Terra,
+    \emph{Proceedings of the 12th Python in Science Conference}.
+    \\
+\Year{2012}  &
+    \Me, \Val.
+    Use of the ``shape-of-anomaly'' data misfit in 3D inversion by planting
+    anomalous densities,
+    \emph{SEG Technical Program Expanded Abstracts},
+    \DOI{10.1190/segam2012-0383.1}.
+    \\
+    ~ &
+    \Dio, \Me, \YLi, \Val, \BragaVale, \Angeli, \Peres.
+    Iron ore interpretation using gravity-gradient inversions in the Carajás, Brazil.
+    \emph{SEG Technical Program Expanded Abstracts},
+    \DOI{10.1190/segam2012-0525.1}.
+    \\
+\Year{2011}  &
+    \Me, \Everton, \Carla, \Eder.
+    Optimal forward calculation method of the Marussi tensor due to a geologic
+    structure at GOCE height,
+    \emph{Proceedings of the 4th International GOCE User Workshop}.
+    \\
+    ~ &
+    \Me, \Val.
+    Robust 3D gravity gradient inversion by planting anomalous densities,
+    \emph{SEG Technical Program Expanded Abstracts},
+    \DOI{10.1190/1.3628201}.
+    \\
+    ~ &
+    \Me, \Val.
+    3D gravity inversion by planting anomalous densities.
+    \emph{12th International Congress of the Brazilian Geophysical Society},
+    \DOI{10.1190/sbgf2011-179}.
+    \\
+    ~ &
+    \Me, \Val.
+    3D gravity gradient inversion by planting density anomalies.
+    \emph{73th EAGE Conference and Exhibition incorporating SPE EUROPEC},
+    \DOI{10.3997/2214-4609.20149567}.
+    \\
+    ~ &
+    \Dio, \Me, \Val, \BragaVale, \Gomes.
+    In-depth imaging of an iron orebody from Quadrilatero Ferrifero using 3D
+    gravity gradient inversion,
+    \emph{SEG Technical Program Expanded Abstracts},
+    \DOI{10.1190/1.3628219}.
+    \\
+    ~ &
+    \Dio, \Val, \Me, \BragaVale.
+    Inversão de Dados de Aerogradiometria Gravimétrica 3D-FTG Aplicada a
+    Exploração Mineral na Região do Quadrilátero Ferrífero,
+    \emph{12th International Congress of the Brazilian Geophysical Society},
+    \DOI{10.1190/sbgf2011-243}.
+\end{EntriesTable}
+
+
+\subsection*{Other publications}
+
+\begin{EntriesTable}
+%\Year{In preparation}  &
+    %\\
+%\Year{Submitted}  &
+    %\\
+\Year{2017}  &
+    \Me.
+    Step-by-step NMO correction,
+    \emph{The Leading Edge},
+    \DOI{10.1190/tle36020179.1}.
+    \\
+\Year{2014}  &
+    \Me, \Bi, \Val.
+    Geophysical tutorial: Euler deconvolution of potential-field data,
+    \emph{The Leading Edge},
+    \DOI{10.1190/tle33040448.1}.
+\end{EntriesTable}
+
+
+\subsection*{Open Datasets}
+
+\begin{EntriesTable}
+\Year{2017}  &
+    \Me, \Val.
+    A gravity-derived Moho model for South America: source code, data, and
+    model results from ``Fast non-linear gravity inversion in spherical
+    coordinates with application to the South American Moho''.
+    \DOI{10.6084/m9.figshare.3987267}
+\end{EntriesTable}
+
+
+\subsection*{Open-source Software}
+
+I work on several open-source projects, all of which are available through
+my Github profile
+\href{https://github.com/leouieda/}{github.com/leouieda}.
+My main projects are:
+\\[0.4cm]
+\textbf{GMT/Python} -- \href{http://www.gmtpython.xyz}{www.gmtpython.xyz}
+\\
+A Python interface for the Generic Mapping Tools.
+\\[0.3cm]
+\textbf{Fatiando a Terra} -- \href{http://www.fatiando.org}{www.fatiando.org}
+\\
+A Python library for geophysical data analysis, modeling, and
+inversion.
+\\[0.3cm]
+\textbf{Tesseroids} -- \href{http://www.tesseroids.org}{www.tesseroids.org}
+\\
+Command-line programs for forward modeling of gravitational fields in
+spherical coordinates.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Teaching}
+
+All educational material developed for these courses is available at
+\href{http://www.leouieda.com/teaching}{leouieda.com/teaching}
+
+\subsection*{Undergraduate -- Universidade do Estado do Rio de Janeiro}
+
+\begin{EntriesTable}
+    \Duration{2014}{2016}  &
+    Special Mathematics I: Introduction to Programming and Numerical Analysis
+    \\
+    \Duration{2014}{2016}  &
+    Geophysics I: Gravity and magnetic methods
+    \\
+    \Duration{2014}{2016}  &
+    Geophysics II: Exploration Seismology
+    \\
+    \Year{2015}  &
+    Introduction to Geology
+\end{EntriesTable}
+
+
+\subsection*{Workshops and Short Courses}
+
+\begin{EntriesTable}
+\Year{2017}  &
+    Introduction to Python (6 hour workshop)
+    \newline
+    Department of Geology and Geophysics -- University of Hawaii at Manoa,
+    USA
+    \\
+\Year{2016}  &
+    Python for Geologists (6 hour workshop)
+    \newline
+    School of Geology -- Universidade do Estado do Rio de Janeiro, Brazil
+    \\
+    ~  &
+    Python for Earth Scientists (30 hour short course)
+    \newline
+    Department of Geophysics -- Universidade de São Paulo, Brazil
+    \\
+\Year{2014}  &
+    Introduction to Geophysical Inversion (16 hour short course)
+    \newline
+    Institute of Geosciences -- Universidade de Brasília, Brazil
+    \\
+\Year{2011}  &
+    Introduction to Geophysical Inversion (30 hour short course)
+    \newline
+    Department of Geophysics -- Universidade de São Paulo, Brazil
+\end{EntriesTable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Presentations}
+
+Slides, posters, and abstracts for all presentations are available at
+\href{http://www.leouieda.com/talks/}{leouieda.com/talks}
+and
+\\
+\href{http://www.leouieda.com/posters/}{leouieda.com/posters}
+\\
+\begin{EntriesTable}
+%\Year{Future}  &
+\Year{2017}  &
+    \Invited{}
+    \Me, et al.
+    Nurturing reliable and robust open-source scientific software,
+    \emph{AGU Fall Meeting 2017},
+    New Orleans, USA.
+    \Youtube{0GO4ZZ5Ry6M}
+    \\
+    ~  &
+    \Me, et al.
+    A modern Python interface for the Generic Mapping Tools,
+    \emph{AGU Fall Meeting 2017},
+    New Orleans, USA.
+    \\
+    ~  &
+    \Me, et al.
+    Bringing the Generic Mapping Tools to Python,
+    \emph{Scipy 2017},
+    Austin, USA.
+    \Youtube{93M4How7R24}
+    \\
+    ~ &
+    \Me.
+    Inverting gravity to map the Moho: A new method and the open source
+    software that made it possible,
+    \emph{University of Hawaii},
+    Honolulu, USA.
+    \\
+\Year{2016}  &
+    \Invited{}
+    \Me.
+    Fatiando a Terra: construindo uma base para ensino e pesquisa de geofísica,
+    \emph{Observatório Nacional},
+    Rio de Janeiro, Brazil.
+    \\
+\Year{2015}  &
+    \Invited{}
+    \Me.
+    Fatiando a Terra: construindo uma base para ensino e pesquisa de geofísica,
+    \emph{Universidade de São Paulo},
+    São Paulo, Brazil.
+    \\
+\Year{2014}  &
+    \Me, et al.
+    Using Fatiando a Terra to solve inverse problems in geophysics,
+    \emph{Scipy 2014},
+    Austin, USA.
+    \\
+    ~ &
+    \Me, et al.
+    Gravity inversion in spherical coordinates using tesseroids,
+    \emph{EGU General Assembly 2014},
+    Vienna, Austria.
+    \\
+\Year{2013}  &
+    \Me, et al.
+    Modeling the Earth with Fatiando a Terra,
+    \emph{Scipy 2013},
+    Austin, USA.
+    \Youtube{Ec38h1oB8cc}
+    \\
+    ~ &
+    \Me, et al.
+    3D magnetic inversion by planting anomalous densities,
+    \emph{AGU Meeting of the Americas},
+    Cancun, Mexico.
+    \\
+\Year{2012}  &
+    \Dio, \Me, et al.
+    Iron ore interpretation using gravity-gradient inversions in the Carajás,
+    Brazil,
+    \emph{SEG Annual Meeting 2012},
+    Las Vegas, USA.
+    \\
+    ~ &
+    \Me, et al.
+    Use of the ``shape-of-anomaly'' data misfit in 3D inversion by planting
+    anomalous densities,
+    \emph{SEG Annual Meeting 2012},
+    Las Vegas, USA.
+    \\
+    ~ &
+    \Me, et al.
+    Rapid 3D inversion of gravity and gravity gradient data to test geologic
+    hypotheses,
+    \emph{International Symposium on Gravity, Geoid and Height Systems},
+    Venice, Italy.
+    \\
+\Year{2011}  &
+    \Me, et al.
+    Robust 3D gravity gradient inversion by planting anomalous densities,
+    \emph{SEG Annual Meeting 2011},
+    San Antonio, USA.
+    \\
+    ~ &
+    \Me, et al.
+    3D gravity inversion by planting anomalous densities,
+    \emph{Internation Congress of the Brazilian Geophysical Society},
+    Rio de Janeiro, Brazil.
+    \\
+    ~ &
+    \Me, et al.
+    Optimal forward calculation method of the Marussi tensor due to a geologic
+    structure at GOCE height,
+    \emph{4th International GOCE User Workshop},
+    Munich, Germany.
+    \\
+    ~ &
+    \Me, et al.
+    3D gravity gradient inversion by planting density anomalies,
+    \emph{73th EAGE Conference and Exhibition incorporating SPE EUROPEC},
+    Vienna, Austria.
+    \\
+\Year{2010}  &
+    \Me, et al.
+    Computation of the gravity gradient tensor due to topographic masses using
+    tesseroids,
+    \emph{AGU Meeting of the Americas},
+    Foz do Iguaçu, Brazil.
+    \\
+\Year{2008}  &
+    \Me, et al.
+    Utilização de tesseróides na modelagem de dados de gradiometria
+    gravimétrica,
+    \emph{XIII Simpósio de Iniciação Científica do IAG-USP},
+    São Paulo, Brazil.
+    \\
+\Year{2006}  &
+    \Me, et al.
+    Paleomagnetismo e mineralogia magnética dos diques cambrianos de Maravilhas
+    e Prata (PB),
+    \emph{XI Simpósio de Iniciação Científica do IAG/USP},
+    São Paulo, Brazil.
+\end{EntriesTable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Academic Service \& Affiliations}
+
+\subsection*{Committees}
+
+\begin{EntriesTable}
+    \Year{2015} & Chairman of the Election Committee for the deans of the
+    University and the School of Geology, Universidade do Estado do Rio de
+    Janeiro
+\end{EntriesTable}
+
+
+\subsection*{Reviewer}
+
+Geophysical Journal International
+--
+Journal of Geodesy
+--
+Pure and Applied Geophysics
+--
+Journal of Applied Geophysics
+--
+Geophysical Prospecting
+--
+Geophysics
+--
+Central European Journal of Geosciences
+--
+Computers \& Geosciences
+
+
+\subsection*{Affiliations}
+
+American Geophysical Union
+--
+Society of Exploration Geophysicists
+--
+Geological Society of America
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Languages}
+
+\TablePad
+\begin{tabularx}{\textwidth}{@{}p{0.15\textwidth} p{0.85\textwidth}@{}}
+    Portuguese & Native
+    \\
+    English & Fluent (TOEFL iBT score 115/120)
+\end{tabularx}
+
+\end{document}
