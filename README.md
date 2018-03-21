@@ -8,13 +8,13 @@ These are my application documents for the position of Lecturer in the Masters
 of Data Science Program of the University of British Columbia, as advertised on
 the website of the Department of Statistics.
 
-The documents can be downloaded as individual PDF files or as a single file:
+The documents can be downloaded as individual PDF files or as a single combined file:
 
-**Cover letter:** [cover-letter.pdf](https://github.com/leouieda/ubc-lecturer-data-science-application/raw/pdf/cover-letter.pdf)
+**Cover letter and references:** [cover-letter.pdf](https://github.com/leouieda/ubc-lecturer-data-science-application/blob/pdf/cover-letter.pdf)
 
-**Curriculum Vitae:** [curriculum-vitae.pdf](https://github.com/leouieda/ubc-lecturer-data-science-application/raw/pdf/curriculum-vitae.pdf)
+**Curriculum Vitae:** [curriculum-vitae.pdf](https://github.com/leouieda/ubc-lecturer-data-science-application/blob/pdf/curriculum-vitae.pdf)
 
-**Combined document:** [leonardo_uieda_coverletter_and_cv.pdf](https://github.com/leouieda/ubc-lecturer-data-science-application/raw/pdf/leonardo_uieda_coverletter_and_cv.pdf)
+**Combined document:** [leonardo_uieda_coverletter_and_cv.pdf](https://github.com/leouieda/ubc-lecturer-data-science-application/blob/pdf/leonardo_uieda_coverletter_and_cv.pdf)
 
 
 ## Build instructions
